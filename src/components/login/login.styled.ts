@@ -2,7 +2,7 @@ import {StyleSheet} from 'react-native';
 import {blueGreyColor} from '../../shared/colorScheme.styled';
 import {fonts} from '../../shared/fonts';
 
-const styles = StyleSheet.create({
+const loginStyles = StyleSheet.create({
   LoginContainer: {
     flex: 1,
     backgroundColor: blueGreyColor.background,
@@ -14,6 +14,12 @@ const styles = StyleSheet.create({
     color: blueGreyColor.secondary,
     fontFamily: fonts.bold,
     marginBottom: 10,
+  },
+  SubText: {
+    fontSize: 32,
+    color: blueGreyColor.secondary,
+    fontFamily: fonts.regular,
+    alignSelf: 'flex-start',
   },
   Card: {
     borderColor: 'white',
@@ -56,6 +62,10 @@ const styles = StyleSheet.create({
   Text: {
     fontFamily: fonts.bold,
   },
+  BottomText: {
+    fontFamily: fonts.regular,
+    marginTop: 10,
+  },
 });
 
-export default styles;
+export default loginStyles;

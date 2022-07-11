@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 import {blueGreyColor} from '../../shared/colorScheme.styled';
 
-export const styles = StyleSheet.create({
+export const homeStyles = StyleSheet.create({
   HomeContainer: {
     flex: 1,
     paddingTop: 50,

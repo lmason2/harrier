@@ -1,6 +1,7 @@
 import React, {Dispatch, FC, SetStateAction, useState} from 'react';
 import {View, Text, TextInput, TouchableOpacity} from 'react-native';
-import styles from './login.styled';
+import loginStyles from './login.styled';
+import sharedStyles from '../../shared/sharedStyles.styled';
 
 interface LoginProps {
   setIsLoggedIn: Dispatch<SetStateAction<boolean>>;
@@ -14,25 +15,29 @@ const handleLogin = (setIsLoggedIn: Dispatch<SetStateAction<boolean>>) => {
 const Login: FC<LoginProps> = ({setIsLoggedIn}) => {
   const [isSigningUp, setIsSigningUp] = useState(false);
   return (
-    <View style={styles.LoginContainer}>
-      <Text style={styles.MainText}>Harrier</Text>
-      <View style={styles.Card}>
+    <View style={loginStyles.LoginContainer}>
+      <Text style={loginStyles.MainText}>Harrier</Text>
+      <View style={loginStyles.Card}>
+        <Text style={loginStyles.SubText}>
+          {isSigningUp ? 'New Account' : 'Login'}
+        </Text>
+        <View style={sharedStyles.HorizontalRule} />
         {isSigningUp && (
           <>
             <TextInput
-              style={styles.TextInput}
+              style={loginStyles.TextInput}
               placeholder="Full Name"
               placeholderTextColor="#000"
             />
           </>
         )}
         <TextInput
-          style={styles.TextInput}
+          style={loginStyles.TextInput}
           placeholder="Email"
           placeholderTextColor="#000"
         />
         <TextInput
-          style={styles.TextInput}
+          style={loginStyles.TextInput}
           secureTextEntry={true}
           placeholder="Password"
           placeholderTextColor="#000"
@@ -40,32 +45,32 @@ const Login: FC<LoginProps> = ({setIsLoggedIn}) => {
         {isSigningUp && (
           <>
             <TextInput
-              style={styles.TextInput}
+              style={loginStyles.TextInput}
               placeholder="Confirm Password"
               secureTextEntry={true}
               placeholderTextColor="#000"
             />
           </>
         )}
-        {!isSigningUp && (
-          <TouchableOpacity
-            style={styles.Button}
-            onPress={() => {
-              handleLogin(setIsLoggedIn);
-            }}>
-            <Text style={styles.Text}>Login</Text>
-          </TouchableOpacity>
-        )}
         <TouchableOpacity
-          style={styles.Button}
+          style={loginStyles.Button}
           onPress={() => {
-            setIsSigningUp(s => !s);
+            handleLogin(setIsLoggedIn);
           }}>
-          <Text style={styles.Text}>
-            {isSigningUp ? `Create Account` : `Sign Up`}
+          <Text style={loginStyles.Text}>
+            {isSigningUp ? 'Create Account' : 'Login'}
           </Text>
         </TouchableOpacity>
       </View>
+      <Text
+        style={loginStyles.BottomText}
+        onPress={() => {
+          setIsSigningUp(s => !s);
+        }}>
+        {isSigningUp
+          ? `Already have an account? Login`
+          : `Need an account? Create Account`}
+      </Text>
     </View>
   );
 };
